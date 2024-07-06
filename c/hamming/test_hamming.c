@@ -1,6 +1,8 @@
 #include "test-framework/unity.h"
 #include "hamming.h"
 
+#include <stddef.h>
+
 void setUp(void)
 {
 }
@@ -54,6 +56,11 @@ static void test_disallow_empty_second_strand(void)
    TEST_ASSERT_EQUAL(-1, compute("G", ""));
 }
 
+static void test_handle_null(void)
+{
+   TEST_ASSERT_EQUAL(-1, compute(NULL, ""));
+}
+
 int main(void)
 {
    UNITY_BEGIN();
@@ -67,6 +74,7 @@ int main(void)
    RUN_TEST(test_disallow_second_strand_when_longer);
    RUN_TEST(test_disallow_empty_first_strand);
    RUN_TEST(test_disallow_empty_second_strand);
+   RUN_TEST(test_handle_null);
 
    return UNITY_END();
 }

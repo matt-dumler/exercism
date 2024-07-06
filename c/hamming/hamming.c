@@ -12,24 +12,22 @@
 int compute(const char *lhs, const char *rhs)
 {
     /*
-     * Capture the length of each string, and ensure they are equal lengths.
+     * Ensure the strings are not null and equal length, and capture the value.
      */
-    const int len_lhs = strlen(lhs),
-          len_rhs = strlen(rhs);
-
-    if (len_lhs != len_rhs) {
+    size_t length;
+    if (!lhs || !rhs || strlen(lhs) != (length = strlen(rhs))) {
         return ERROR_VALUE;
     }
 
     /*
      * Compare each string's characters, and total the differences.
      */
-    int distance = 0;
-    for (int i = 0; i < len_lhs; i++) {
+    size_t ndifferences = 0;
+    for (size_t i = 0; i < length; i++) {
         if (lhs[i] != rhs[i]) {
-            distance++;
+            ndifferences++;
         }
     }
 
-    return distance;
+    return ndifferences;
 }
