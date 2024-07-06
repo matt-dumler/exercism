@@ -12,7 +12,7 @@
 int compute(const char *lhs, const char *rhs)
 {
     /*
-     * Ensure the strings are not null and equal length, and capture the value.
+     * Ensure the strings are non-null and equal length, and capture the value.
      */
     size_t length;
     if (!lhs || !rhs || strlen(lhs) != (length = strlen(rhs))) {
