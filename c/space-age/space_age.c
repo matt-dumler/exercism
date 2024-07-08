@@ -17,9 +17,6 @@ static const int SECONDS_A_YEAR = 31557600;
 
 float age(planet_t planet, int64_t seconds)
 {
-    if (planet >= 0 && planet < 8) {
-        return seconds / SECONDS_A_YEAR / PLANET_YEAR_RATIOS[planet];
-    } else {
-        return ERROR_VALUE;
-    }
+    return planet >= 0 && planet < 8 ?
+        seconds / SECONDS_A_YEAR / PLANET_YEAR_RATIOS[planet] : ERROR_VALUE;
 }
