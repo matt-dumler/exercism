@@ -6,7 +6,7 @@
  */
 unsigned int egg_count(unsigned int input)
 {
-    int count = 0;
+    unsigned int count = 0;
     while (input > 0) {
         // Increment the counter if the least significant bit is one.
         if (input & 1) {
