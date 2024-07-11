@@ -37,14 +37,13 @@ size_t personal_top_three(const int32_t *scores, size_t scores_len,
 {
     // Create a buffer and calculate needed valueas ahead of time.
     int32_t buffer[scores_len];
-    size_t score_size = sizeof(int32_t),
-           nscores = sizeof(scores) / score_size;
+    size_t score_size = sizeof(int32_t);
 
     // Create a copy of and sort the scores.
     memcpy(buffer, scores, scores_len * score_size);
-    qsort((void *)buffer, nscores, score_size, descending);
+    qsort((void *)buffer, scores_len, score_size, descending);
 
-    size_t count = nscores > 3 ? 3 : nscores;
+    size_t count = scores_len > 3 ? 3 : scores_len;
     memcpy(output, buffer, count * score_size);
     return count;
 }
