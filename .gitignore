@@ -1,2 +1,10 @@
 **/*.out
 **/.exercism
+cpp/**/Makefile
+**/CMakeCache.txt
+**/CMakeFiles
+**/*.cmake
+
+# Ignore files without an extension (binaries)
+*
+!*.*
