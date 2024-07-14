@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#define BUFFER_SIZE 100
+
 bool is_armstrong_number(int candidate)
 {
-    const int BUFFER_SIZE = 10;
     char buffer[BUFFER_SIZE];
 
     sprintf(buffer, "%d", candidate);
