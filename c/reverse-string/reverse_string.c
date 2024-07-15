@@ -6,12 +6,12 @@
 char *reverse(const char *value)
 {
     const size_t length = strlen(value);
-    char *buffer = malloc(length + 1);
 
-    for (size_t i = 0, j = length - 1; i < length; i++, j--) {
-        buffer[i] = value[j];
-    }
+    char *buffer = malloc(length + 1);
     buffer[length] = '\0';
+
+    for (char *p = buffer + (length - 1); *value; value++)
+        *(p--) = *value;
 
     return buffer;
 }
