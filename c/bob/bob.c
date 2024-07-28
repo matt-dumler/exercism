@@ -29,11 +29,10 @@ static bool is_shouted(char *greeting)
 {
     bool is_shouted = false;
     for (char *p = greeting; *p != '\0'; p++) {
-
         if (isalpha(*p)) {
-            is_shouted = true;
-
-            if (!isupper(*p)) {
+            if (isupper(*p)) {
+                is_shouted = true;
+            } else {
                 return false;
             }
         }
