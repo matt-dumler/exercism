@@ -1,38 +1,27 @@
 package anagram
 
-import "strings"
+import (
+    "sort"
+    "strings"
+)
 
-func mapChars(word string) map[rune]int {
-    chars := map[rune]int{}
-
-    for _, char := range strings.ToLower(word) {
-        chars[char]++
-    }
-
-    return chars
+func sortString(s string) string {
+    chars := strings.Split(s, "")
+    sort.Strings(chars)
+    return strings.Join(chars, "")
 }
 
-func equalMaps(a, b map[rune]int) bool {
-    for k, v := range a {
-        if v != b[k] {
-            return false
-        }
-    }
-
-    return true
+func isAnagram(a, b string) bool {
+    return a != b && sortString(a) == sortString(b)
 }
 
 func Detect(subject string, candidates []string) []string {
     results := []string{}
 
-    mapOfChars := mapChars(subject)
-    for _, word := range candidates {
-        if len(word) != len(subject) || strings.ToLower(word) == strings.ToLower(subject) {
-            continue
-        }
-
-        if equalMaps(mapOfChars, mapChars(word)) {
-            results = append(results, word)
+    subject = strings.ToLower(subject)
+    for _, candidate := range candidates {
+        if isAnagram(subject, strings.ToLower(candidate)) {
+            results = append(results, candidate)
         }
     }
 
