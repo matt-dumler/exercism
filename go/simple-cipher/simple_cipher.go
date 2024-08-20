@@ -28,6 +28,10 @@ func NewShift(distance int) Cipher {
 }
 
 func shiftRuneByN(r rune, n int) rune {
+    if n < 0 {
+        n += alphabetSize
+    }
+
     index := int(r - 'a')     // The index of r in the alphabet
     moved := (index + n) % 26 // The index of r once shifted
 
